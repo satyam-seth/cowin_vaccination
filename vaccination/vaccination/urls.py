@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.StatesView.as_view(),name='states'),
     path('districts/<int:state_id>', views.DistrictsView.as_view(),name='districts'),
+    path('sessions/<int:district_id>', views.SessionsView.as_view(),name='sessions'),
 ]

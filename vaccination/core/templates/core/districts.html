@@ -11,6 +11,7 @@
         {% for district in districts %}
             <div>
                 {{district.district_id}} {{district.district_name}}
+                <a href="{% url 'sessions' district.district_id %}">Go</a>
             </div>
         {% endfor %}
     {% else %}

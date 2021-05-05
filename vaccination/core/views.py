@@ -23,3 +23,8 @@ class DistrictsView(View):
     def get(self,request,state_id,*args,**kwargs):
         context=get_data(f'https://cdn-api.co-vin.in/api/v2/admin/location/districts/{state_id}')
         return render(request,'core/districts.html',context)
+
+class SessionsView(View):
+    def get(self,request,district_id,*args,**kwargs):
+        context=get_data(f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={district_id}&date=31-03-2021')
+        return render(request,'core/sessions.html',context)
