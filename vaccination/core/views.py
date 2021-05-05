@@ -15,6 +15,11 @@ def get_data(link):
     return content.json()
 
 class StatesView(View):
-    def get(self,request):
+    def get(self,request,*args,**kwargs):
         context=get_data('https://cdn-api.co-vin.in/api/v2/admin/location/states')
         return render(request,'core/states.html',context)
+
+class DistrictsView(View):
+    def get(self,request,state_id,*args,**kwargs):
+        context=get_data(f'https://cdn-api.co-vin.in/api/v2/admin/location/districts/{state_id}')
+        return render(request,'core/districts.html',context)

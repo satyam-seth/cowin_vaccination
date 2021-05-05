@@ -7,11 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    {% if states %}
-        {% for state in states %}
+    {% if districts %}
+        {% for district in districts %}
             <div>
-                {{state.state_id}} {{state.state_name}}
-                <a href="{% url 'districts' state.state_id %}">Go</a>
+                {{district.district_id}} {{district.district_name}}
             </div>
         {% endfor %}
     {% else %}
