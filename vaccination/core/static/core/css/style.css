@@ -1,4 +1,15 @@
 .text-responsive {
-    font-size: calc(100% + 1vw + 1vh);
+    font-size: calc(100% + 0.5vw + 0.5vh);
     font-family: "Rubik", sans-serif;
+}
+
+.bgcol{
+    background-color: #fb7299;
+}
+
+.bgimage{
+    background: url("../images/background.jpg") no-repeat center fixed;
+    background-color: #F9CCD7;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

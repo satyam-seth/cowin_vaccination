@@ -2,14 +2,35 @@
 {% load static %}
 {% block title %}States{% endblock title %}
 {% block content %}
-    {% if states %}
-        {% for state in states %}
-            <div>
-                {{state.state_id}} {{state.state_name}}
-                <a href="{% url 'districts' state.state_id %}">Go</a>
-            </div>
-        {% endfor %}
-    {% else %}
-        <h1>Not Found</h1>
-    {% endif %}
+<div class="container py-5">
+    <div class="alert alert-danger text-center text-responsive shadow-lg" role="alert">
+        Select your State
+    </div>
+    <div class="row border border-danger border-2 rounded my-5 shadow-lg">
+        <table class="table table-danger text-center table-striped mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">State No.</th>
+                    <th scope="col">State Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if states %}
+                    {% for state in states %}
+                    <tr>
+                        <th scope="row">{{state.state_id}}</th>
+                        <td>{{state.state_name}}</td>
+                        <td><a class="btn btn-outline-danger btn-sm" href="{% url 'districts' state.state_id %}">Districts Details</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h1>Not Found</h1>
+                {% endif %}
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock content %}
