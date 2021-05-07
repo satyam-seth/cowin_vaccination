@@ -12,8 +12,8 @@
           <a class="nav-link {{home_active}} {{home_disabled}}" aria-current="page" href="/">Home</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form method="get" action="{% url 'find_by_pin' %}" class="d-flex">
+        <input class="form-control me-2" type="search" name="pin" placeholder="Find by Pincode" aria-label="Search">
         <button class="btn btn-danger" type="submit">Search</button>
       </form>
     </div>

@@ -31,5 +31,11 @@ class CentersView(View):
     def get(self,request,district_id,*args,**kwargs):
         today_date=timezone.now().today().strftime("%d-%m-%Y")
         context=get_data(f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={district_id}&date={today_date}')
-        context['district_id']=district_id
+        return render(request,'core/centers.html',context)
+
+class PincodeView(View):
+    def get(self,request,*args,**kwargs):
+        pin=request.GET['pin']
+        today_date=timezone.now().today().strftime("%d-%m-%Y")
+        context=get_data(f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode={pin}&date={today_date}')
         return render(request,'core/centers.html',context)

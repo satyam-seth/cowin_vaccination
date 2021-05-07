@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.StatesView.as_view(),name='states'),
     path('districts/<int:state_id>', views.DistrictsView.as_view(),name='districts'),
     path('centers/<int:district_id>', views.CentersView.as_view(),name='centers'),
+    path('pincode/', views.PincodeView.as_view(),name='find_by_pin'),
 ]
