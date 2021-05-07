@@ -4,13 +4,13 @@
 {% block content %}
 <div class="container py-5">
     <div class="alert alert-danger text-center text-responsive shadow-lg" role="alert">Select Your District</div>
-    <div class="row border border-danger border-2 rounded my-5 shadow-lg">
+    <div class="row border border-danger border-2 rounded my-5 shadow-lg overflow-auto">
         <table class="table table-danger text-center table-striped mt-2">
             <thead>
                 <tr>
                     <th scope="col">District No.</th>
                     <th scope="col">District Name</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Center Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +19,7 @@
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
                         <td>{{district.district_name}}</td>
-                        <td><a class="btn btn-outline-danger btn-sm" href="{% url 'sessions' district.district_id %}">Sessions Details</a></td>
+                        <td><a class="btn btn-outline-danger btn-sm" href="{% url 'centers' district.district_id %}">Center Details</a></td>
                     </tr>
                     {% endfor %}
                 {% else %}

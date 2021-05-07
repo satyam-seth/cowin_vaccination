@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Center{% endblock title %}
+{% block content %}
+<div class="container py-5">
+    <div class="alert alert-danger text-center text-responsive shadow-lg" role="alert">Available Center Details</div>
+    <div class="row border border-danger border-2 rounded my-5 shadow-lg overflow-auto">
+        <table class="table table-danger table-responsive text-center table-striped mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">Center No.</th>
+                    <th scope="col">Center Name</th>
+                    <th scope="col">Block Name</th>
+                    <th scope="col">Pincode</th>
+                    <th scope="col">Timing</th>
+                    <th scope="col">Fee</th>
+                    <th scope="col">Available Capacity</th>
+                    <th scope="col">Min Age Limit</th>
+                    <th scope="col">Vaccine</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Slots</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if sessions %}
+                    {% for session in sessions %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{session.name}}</td>
+                        <td>{{session.block_name}}</td>
+                        <td>{{session.pincode}}</td>
+                        <td>{{session.from}} - {{session.to}}</td>
+                        <td>Rs.{{session.fee}}</td>
+                        <td>{{session.available_capacity}}</td>
+                        <td>{{session.min_age_limit}}</td>
+                        <td>{{session.vaccine}}</td>
+                        <td>{{session.date}}</td>
+                        <td>
+                            {% if session.slots %}
+                            {% for slot in session.slots %}
+                                {{slot}},
+                            {% endfor %}
+                            {% else %}
+                                NA
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h1>Not Found</h1>
+                {% endif %}
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

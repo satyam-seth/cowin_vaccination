@@ -25,9 +25,9 @@ class DistrictsView(View):
         context=get_data(f'https://cdn-api.co-vin.in/api/v2/admin/location/districts/{state_id}')
         return render(request,'core/districts.html',context)
 
-class SessionsView(View):
+class CentersView(View):
     def get(self,request,district_id,*args,**kwargs):
         today_date=date.today().strftime("%d-%m-%Y")
-        print(f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={district_id}&date={today_date}')
         context=get_data(f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={district_id}&date={today_date}')
-        return render(request,'core/sessions.html',context)
+        context['district_id']=district_id
+        return render(request,'core/centers.html',context)
