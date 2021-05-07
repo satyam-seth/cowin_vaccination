@@ -18,6 +18,8 @@ def get_data(link):
 class StatesView(View):
     def get(self,request,*args,**kwargs):
         context=get_data('https://cdn-api.co-vin.in/api/v2/admin/location/states')
+        context['home_active']='active'
+        context['home_disabled']='disabled'
         return render(request,'core/states.html',context)
 
 class DistrictsView(View):
