@@ -2,14 +2,33 @@
 {% load static %}
 {% block title %}Districts{% endblock title %}
 {% block content %}
-    {% if districts %}
-        {% for district in districts %}
-            <div>
-                {{district.district_id}} {{district.district_name}}
-                <a href="{% url 'sessions' district.district_id %}">Go</a>
-            </div>
-        {% endfor %}
-    {% else %}
-        <h1>Not Found</h1>
-    {% endif %}
+<div class="container py-5">
+    <div class="alert alert-danger text-center text-responsive shadow-lg" role="alert">Select Your District</div>
+    <div class="row border border-danger border-2 rounded my-5 shadow-lg">
+        <table class="table table-danger text-center table-striped mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">District No.</th>
+                    <th scope="col">District Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if districts %}
+                    {% for district in districts %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{district.district_name}}</td>
+                        <td><a class="btn btn-outline-danger btn-sm" href="{% url 'sessions' district.district_id %}">Sessions Details</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <h1>Not Found</h1>
+                {% endif %}
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock content %}
