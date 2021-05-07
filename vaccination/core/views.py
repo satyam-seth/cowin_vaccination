@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render
 from django.views import View
-from datetime import date
+from django.utils import timezone
 
 # Create your views here.
 
@@ -29,7 +29,7 @@ class DistrictsView(View):
 
 class CentersView(View):
     def get(self,request,district_id,*args,**kwargs):
-        today_date=date.today().strftime("%d-%m-%Y")
+        today_date=timezone.now().today().strftime("%d-%m-%Y")
         context=get_data(f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id={district_id}&date={today_date}')
         context['district_id']=district_id
         return render(request,'core/centers.html',context)
