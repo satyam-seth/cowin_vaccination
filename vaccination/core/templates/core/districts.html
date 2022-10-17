@@ -17,7 +17,7 @@
                 {% if districts %}
                     {% for district in districts %}
                     <tr>
-                        <th scope="row">{{forloop.counter}}</th>
+                        <td scope="row" class="fw-bold">{{forloop.counter}}</td>
                         <td>{{district.district_name}}</td>
                         <td><a class="btn btn-outline-danger btn-sm" href="{% url 'centers' district.district_id %}">Center Details</a></td>
                     </tr>

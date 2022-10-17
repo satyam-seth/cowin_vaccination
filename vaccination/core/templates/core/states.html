@@ -17,7 +17,7 @@
                 {% if states %}
                     {% for state in states %}
                     <tr>
-                        <th scope="row">{{state.state_id}}</th>
+                        <td scope="row" class="fw-bold">{{state.state_id}}</td>
                         <td>{{state.state_name}}</td>
                         <td><a class="btn btn-outline-danger btn-sm" href="{% url 'districts' state.state_id %}">District Details</a></td>
                     </tr>
