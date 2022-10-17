@@ -25,7 +25,7 @@
                 {% if sessions %}
                     {% for session in sessions %}
                     <tr>
-                        <th scope="row">{{forloop.counter}}</th>
+                        <td scope="row" class="fw-bold">{{forloop.counter}}</td>
                         <td>{{session.name}}</td>
                         <td>{{session.block_name}}</td>
                         <td>{{session.pincode}}</td>
@@ -37,9 +37,25 @@
                         <td>{{session.date}}</td>
                         <td>
                             {% if session.slots %}
-                            {% for slot in session.slots %}
-                                {{slot}},
-                            {% endfor %}
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>S. No.</th>
+                                        <th>Time</th>
+                                        <th>Slots</th>
+                                    </tr>
+                                </thead> 
+                                <tbody>
+                                        {% for slot in session.slots %}
+                                        <tr>
+                                            <td scope="row" class="fw-bold">{{forloop.counter}}</td>
+                                            <td>{{slot.time}}</td>
+                                            <td>{{slot.seats}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            
                             {% else %}
                                 NA
                             {% endif %}
